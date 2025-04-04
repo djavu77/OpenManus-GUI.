@@ -1,27 +1,28 @@
 # Global LLM configuration
+# 全局大语言模型配置
 [llm]
-model = "claude-3-7-sonnet-20250219"       # The LLM model to use
-base_url = "https://api.anthropic.com/v1/" # API endpoint URL
-api_key = "YOUR_API_KEY"                   # Your API key
-max_tokens = 8192                          # Maximum number of tokens in the response
-temperature = 0.0                          # Controls randomness
+model = "gemini-2.0-flash"       # 使用的LLM模型（英文注释保留）
+base_url = "https://generativelanguage.googleapis.com/v1beta/openai/"                              # API端点URL
+api_key = ""                   # 您的API密钥
+max_tokens = 8192                          # 响应中允许的最大token数
+temperature = 0.0                          # 控制生成随机性（0-1，0最确定）
 
-# [llm] # Amazon Bedrock
-# api_type = "aws"                                       # Required
-# model = "us.anthropic.claude-3-7-sonnet-20250219-v1:0" # Bedrock supported modelID
-# base_url = "bedrock-runtime.us-west-2.amazonaws.com"   # Not used now
-# max_tokens = 8192
-# temperature = 1.0
-# api_key = "bear"                                       # Required but not used for Bedrock
+# [llm] # Amazon Bedrock 配置示例
+# api_type = "aws"                                       # 必须设置为aws
+# model = "us.anthropic.claude-3-7-sonnet-20250219-v1:0" # Bedrock支持的模型ID
+# base_url = "bedrock-runtime.us-west-2.amazonaws.com"   # 当前未使用
+# max_tokens = 8192                                      # 最大token数
+# temperature = 1.0                                      # 生成随机性（1.0最随机）
+# api_key = "bear"                                       # 必须填写但实际不使用
 
-# [llm] #AZURE OPENAI:
-# api_type= 'azure'
-# model = "YOUR_MODEL_NAME" #"gpt-4o-mini"
-# base_url = "{YOUR_AZURE_ENDPOINT.rstrip('/')}/openai/deployments/{AZURE_DEPOLYMENT_ID}"
-# api_key = "AZURE API KEY"
-# max_tokens = 8096
-# temperature = 0.0
-# api_version="AZURE API VERSION" #"2024-08-01-preview"
+# [llm] #Azure OpenAI 配置示例:
+# api_type= 'azure'                              # 必须设置为azure
+# model = "YOUR_MODEL_NAME"                     # 模型名称 例如："gpt-4o-mini"
+# base_url = "{YOUR_AZURE_ENDPOINT.rstrip('/')}/openai/deployments/{AZURE_DEPOLYMENT_ID}"  # Azure端点URL
+# api_key = "AZURE API KEY"                     # Azure API密钥
+# max_tokens = 8096                             # 最大token数限制
+# temperature = 0.0                             # 生成确定性控制
+# api_version="AZURE API VERSION"               # API版本 例如："2024-08-01-preview"
 
 # [llm] #OLLAMA:
 # api_type = 'ollama'
@@ -32,12 +33,13 @@ temperature = 0.0                          # Controls randomness
 # temperature = 0.0
 
 # Optional configuration for specific LLM models
+# 特定LLM模型的视觉配置
 [llm.vision]
-model = "claude-3-7-sonnet-20250219"       # The vision model to use
-base_url = "https://api.anthropic.com/v1/" # API endpoint URL for vision model
-api_key = "YOUR_API_KEY"                   # Your API key for vision model
-max_tokens = 8192                          # Maximum number of tokens in the response
-temperature = 0.0                          # Controls randomness for vision model
+model = "gemini-2.0-flash"       # 使用的视觉模型
+base_url = "https://generativelanguage.googleapis.com/v1beta/openai/" # 视觉模型API端点URL
+api_key = ""                   # 视觉模型API密钥
+max_tokens = 8192                          # 响应最大token数限制
+temperature = 0.0                          # 生成随机性控制（0最确定）
 
 # [llm.vision] #OLLAMA VISION:
 # api_type = 'ollama'
