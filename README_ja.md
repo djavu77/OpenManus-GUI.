@@ -12,11 +12,11 @@
 
 <p align="center">
   <a href="https://github.com/mannaandpoem/OpenManus/stargazers"><img src="https://img.shields.io/github/stars/mannaandpoem/OpenManus?style=social" alt="GitHub stars"></a>
-  &amp;ensp;
+  &ensp;
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
-  &amp;ensp;
+  &ensp;
   <a href="https://discord.gg/DYn29wFk9z"><img src="https://dcbadge.vercel.app/api/server/DYn29wFk9z?style=flat" alt="Discord Follow"></a>
-  &amp;ensp;
+  &ensp;
   <a href="https://huggingface.co/spaces/lyh-917/OpenManusDemo"><img src="https://img.shields.io/badge/Demo-Hugging%20Face-yellow" alt="Demo"></a>
 </p>
 
@@ -26,18 +26,25 @@
 
 Manusに触発された**OpenManus**は、様々なタスクに取り組むことができる多機能AIエージェントを構築するためのオープンソースフレームワークを提供します。招待コードなしでユーザーがアイデアを実現できるようにすることを目指しています。
 
-このバージョンでは、インタラクティブなチャットとセッション管理のためのユーザーフレンドリーな**Web UI**（Gradioで構築）と、プログラムによるアクセスのための**OpenAI互換API**（FastAPIで構築）が統合されています。
+**このバージョンでは、インタラクティブなチャットとセッション管理のためのユーザーフレンドリーなWeb UI（Gradioで構築）と、プログラムによるアクセスのためのOpenAI互換API（FastAPIで構築）、そして純粋なコマンドラインインターフェースが統合され、マルチターン会話、セッション管理、履歴の永続化をサポートしています。**
 
-私たちのチームメンバーである[@Xinbin Liang](https://github.com/mannaandpoem)と[@Jinyu Xiang](https://github.com/XiangJinyu)（コア作者）、そして[@Zhaoyang Yu](https://github.com/MoshiQAQ)、[@Jiayi Zhang](https://github.com/didiforgithub)、[@Sirui Hong](https://github.com/stellaHSR)（[@MetaGPT](https://github.com/geekan/MetaGPT)チーム所属）がこのプロジェクトを開始し、開発を続けています。提案、貢献、フィードバックを歓迎します！
+私たちのチームメンバー [@Xinbin Liang](https://github.com/mannaandpoem) と [@Jinyu Xiang](https://github.com/XiangJinyu)（主要開発者）、そして [@Zhaoyang Yu](https://github.com/MoshiQAQ)、[@Jiayi Zhang](https://github.com/didiforgithub)、[@Sirui Hong](https://github.com/stellaHSR) は [@MetaGPT](https://github.com/geekan/MetaGPT) から来ました。プロトタイプは3時間以内に立ち上げられ、継続的に開発を進めています！
 
-## ✨ 特徴
+これはシンプルな実装ですので、どんな提案、貢献、フィードバックも歓迎します！
+
+OpenManusで自分だけのエージェントを楽しみましょう！
+
+また、UIUCとOpenManusの研究者が共同開発した[OpenManus-RL](https://github.com/OpenManus/OpenManus-RL)をご紹介できることを嬉しく思います。これは強化学習（RL）ベース（GRPOなど）のLLMエージェントチューニング手法に特化したオープンソースプロジェクトです。
+
+## ✨ 特徴 (追加)
 
 *   **マルチターン会話**: コンテキストを保持した拡張対話が可能です。
-*   **Web UI**: 直感的なWebインターフェースを通じてエージェントと対話できます。以下の機能が含まれます：
+*   **Web UI (Gradio)**: 直感的なWebインターフェースを通じてエージェントと対話できます。以下の機能が含まれます：
     *   リアルタイム更新のためのストリーミング応答。
     *   セッション管理（会話の作成、名前変更、削除、切り替え）。
     *   ローカルの`chatsHistory/`ディレクトリに自動保存される永続的なチャット履歴。
-*   **OpenAI互換API**: 使い慣れたOpenAI SDK形式（`/v1/chat/completions`エンドポイント）を使用して、OpenManusをアプリケーションに統合できます。ストリーミングモードと非ストリーミングモードの両方をサポートします。
+*   **OpenAI互換API (FastAPI)**: 使い慣れたOpenAI SDK形式（`/v1/chat/completions`エンドポイント）を使用して、OpenManusをアプリケーションに統合できます。ストリーミングモードと非ストリーミングモードの両方をサポートします。
+*   **コマンドラインインターフェース (CLI)**: 純粋なターミナルでの対話方法を提供します。
 *   **多機能ツール**: 以下のタスクを実行するためのツールを備えています：
     *   Webブラウジング (`BrowserUseTool`)
     *   コード実行（サンドボックス環境でのPython）
@@ -46,7 +53,7 @@ Manusに触発された**OpenManus**は、様々なタスクに取り組むこ�
     *   Bashコマンド実行（サンドボックス端末経由）
 *   **拡張可能なフレームワーク**: 明確なオブジェクト指向構造で構築されています（`BaseAgent` -> `ReActAgent` -> `ToolCallAgent` -> `BrowserAgent` -> `Manus`）。
 
-## 📸 スクリーンショット
+## 📸 スクリーンショット (追加)
 
 **Web UI:**
 ![OpenManus Web UI スクリーンショット 1](https://github.com/Hank-Chromela/Hank-Chroela-images/blob/main/1743753144854.png?raw=true)
@@ -54,140 +61,129 @@ Manusに触発された**OpenManus**は、様々なタスクに取り組むこ�
 **セッション管理:**
 ![OpenManus Web UI スクリーンショット 2](https://github.com/Hank-Chromela/Hank-Chroela-images/blob/main/1743753160804.png?raw=true)
 
-## 🚀 インストール
+## 🚀 インストール方法
 
-より高速なインストールと依存関係管理のために`uv`の使用を推奨します。
+インストール方法は2つ提供しています。方法2（uvを使用）は、より高速なインストールと優れた依存関係管理のため推奨されています。
 
-**オプション1：`uv`を使用（推奨）**
+### 方法1：condaを使用
 
-1.  `uv`をインストールします（まだの場合）：
-    ```bash
-    curl -LsSf https://astral.sh/uv/install.sh | sh
-    # または https://github.com/astral-sh/uv の指示に従ってください
-    ```
-2.  リポジトリをクローンします：
-    ```bash
-    git clone https://github.com/mannaandpoem/OpenManus.git
-    cd OpenManus
-    ```
-3.  仮想環境を作成してアクティベートします：
-    ```bash
-    uv venv --python 3.12 # またはお好みの Python 3.10+ バージョン
-    source .venv/bin/activate  # Unix/macOS
-    # .venv\Scripts\activate    # Windows
-    ```
-4.  依存関係をインストールします：
-    ```bash
-    uv pip install -r requirements.txt
-    ```
-
-**オプション2：`conda`を使用**
-
-1.  conda環境を作成してアクティベートします：
+1.  新しいconda環境を作成します：
     ```bash
     conda create -n open_manus python=3.12 -y
     conda activate open_manus
     ```
 2.  リポジトリをクローンします：
     ```bash
-    git clone https://github.com/mannaandpoem/OpenManus.git
-    cd OpenManus
+    git clone https://github.com/Hank-Chromela/OpenManus-GUI.git # あなたのForkをクローンしてください
+    cd OpenManus-GUI
     ```
 3.  依存関係をインストールします：
     ```bash
     pip install -r requirements.txt
     ```
 
-**Playwrightブラウザのインストール（ブラウザツールに必要）**
+### 方法2：uvを使用（推奨）
+
+1.  uv（高速なPythonパッケージインストーラーと管理機能）をインストールします：
+    ```bash
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    ```
+2.  リポジトリをクローンします：
+    ```bash
+    git clone https://github.com/Hank-Chromela/OpenManus-GUI.git # あなたのForkをクローンしてください
+    cd OpenManus-GUI
+    ```
+3.  新しい仮想環境を作成してアクティベートします：
+    ```bash
+    uv venv --python 3.12
+    source .venv/bin/activate  # Unix/macOSの場合
+    # .venv\Scripts\activate    # Windowsの場合
+    ```
+4.  依存関係をインストールします：
+    ```bash
+    uv pip install -r requirements.txt
+    ```
+
+### ブラウザ自動化ツール（必須）
+
 ```bash
 playwright install --with-deps
-```
+⚙️ 設定
+OpenManusを使用するには、LLM APIの設定が必要です。以下の手順に従って設定してください：
 
-## ⚙️ 設定
+config/config.example.toml ファイルの確認: このファイルは設定テンプレートです。
+config/config.toml ファイルの作成:
+cp config/config.example.toml config/config.toml
+config/config.toml の編集: APIキーを追加し、設定をカスタマイズします：
+# グローバルLLM設定 (主に default を使用)
+[llm.default]
+model = "gpt-4o" # 例: gpt-4o, gpt-3.5-turbo, claude-3-opus-20240229 など
+api_type = "openai" # "openai", "azure", "aws" (Bedrock) など、LLM設定に応じてサポート
+base_url = "https://api.openai.com/v1" # APIアドレスに置き換えてください
+api_key = "sk-..."  # 重要：実際のAPIキーに置き換えてください！
+max_tokens = 4096
+temperature = 0.0
+# api_version = "..." # Azure OpenAI を使用する場合に必要
 
-OpenManusを使用するには、利用する大規模言語モデル（LLM）の設定が必要です。
+# 特定のLLMモデル用のオプション設定 (例：ビジョンタスク用)
+# [llm.vision]
+# model = "gpt-4o"
+# base_url = "https://api.openai.com/v1"
+# api_key = "sk-..."
+注意: config/config.toml ファイルは機密情報を含むため、.gitignore に追加されており、バージョン管理には含まれません。
+▶️ アプリケーションの実行 (更新)
+異なるエントリーポイントファイルを通じて、異なるモードで起動できるようになりました：
 
-1.  設定ファイルの例をコピーします：
-    ```bash
-    cp config/config.example.toml config/config.toml
-    ```
-2.  `config/config.toml`を編集して、APIキーを追加し、設定（モデル名、ベースURLなど）をカスタマイズします。エージェントは主に`[llm.default]`セクションの設定を使用しますが、コード内で特定の設定が異なる方法でアクセスされる場合を除きます。
-    ```toml
-    # デフォルトのOpenAI設定例
-    [llm.default]
-    model = "gpt-4o" # または gpt-3.5-turbo など
-    api_type = "openai" # または "azure", "aws"
-    base_url = "https://api.openai.com/v1"
-    api_key = "sk-..."  # 重要：実際のOpenAI APIキーに置き換えてください
-    max_tokens = 4096
-    temperature = 0.0
-    # api_version = "..." # Azureに必要
+1. Web UI と API サーバーの起動 (推奨)
 
-    # ビジョンモデルの例（別途必要な場合）
-    # [llm.vision]
-    # model = "gpt-4o"
-    # ... その他の設定 ...
-    ```
-    **注意：** Web UIでは実行時にこれらの設定を上書きできますが、初期設定はこのファイルから読み込まれます。
+main.py スクリプトを実行します：
 
-## ▶️ アプリケーションの実行
-
-`main.py`スクリプトを実行するだけです：
-
-```bash
 python main.py
-```
+# または明示的に all を指定 (デフォルトの動作)
+# python main.py --service all
+これにより：
 
-このコマンドは以下を実行します：
-1.  Manusエージェントを初期化します。
-2.  Gradio UIとFastAPI APIの両方をホストするWebサーバーを起動します。
-3.  デフォルトのブラウザでGradio Web UIを自動的に開こうとします（通常は`http://127.0.0.1:7860`）。
-4.  OpenAI互換APIを`http://127.0.0.1:7860/v1/chat/completions`で利用可能にします。
+Gradio Web UI サーバーが起動します（デフォルトは http://127.0.0.1:7860 でリッスン）。
+FastAPI API サーバーが起動します（デフォルトは http://0.0.0.0:8000 でリッスン）。
+ブラウザで Web UI が自動的に開かれます。
+2. Web UI のみの起動
 
-ターミナルには次のような出力が表示されるはずです：
-```
-INFO:     Starting server on http://127.0.0.1:7860
-INFO:     Gradio UI available at http://127.0.0.1:7860/
-INFO:     API Docs available at http://127.0.0.1:7860/docs
-INFO:     OpenAI compatible API endpoint at http://127.0.0.1:7860/v1/chat/completions
-INFO:     Uvicorn running on http://127.0.0.1:7860 (Press CTRL+C to quit)
-INFO:     Started server process [xxxxx]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-INFO:     Attempting to open browser at http://127.0.0.1:7860
-INFO:     Browser open command issued for http://127.0.0.1:7860
-```
+python main.py --service ui
+Gradio Web UI サーバーのみが起動します（デフォルト http://127.0.0.1:7860）。
+ブラウザが自動的に開かれます。
+3. API サーバーのみの起動
 
-## 💻 Web UIの使用方法
+python main.py --service api
+FastAPI API サーバーのみが起動します（デフォルト http://0.0.0.0:8000）。
+4. コマンドラインインターフェース (CLI) の実行
 
-*   ブラウザが自動的に開かない場合は、手動で`http://127.0.0.1:7860`にアクセスしてください。
-*   **チャット**: 下部のメッセージボックスにリクエストを入力し、Enterキーを押すか「送信」をクリックします。エージェントの思考プロセス、ツールの使用状況、最終的な応答がチャットウィンドウにストリーミング表示されます。
-*   **セッション管理**:
-    *   左側のサイドバーを使用して会話を管理します。
-    *   「➕ 新しいチャット」をクリックして新しい会話を開始します。
-    *   リストからセッションを選択して、その履歴を読み込みます。
-    *   リストの下にある「選択したセッションを管理」セクションを使用して、現在選択されているチャットの名前を変更したり削除したりします（最後のチャットは削除できません）。
-*   **永続性**: チャット履歴とセッション名は、JSONファイルとして`chatsHistory/`ディレクトリに自動的に保存され、アプリケーションを再起動すると再読み込みされます。
+python cli_main.py
+純粋なコマンドライン対話インターフェースを起動します。
+💻 Web UIの使用方法 (追加)
+ブラウザが自動的に開かない場合は、手動でhttp://127.0.0.1:7860にアクセスしてください。
+チャット: 下部のメッセージボックスにリクエストを入力し、Enterキーを押すか「送信」をクリックします。エージェントの思考プロセス、ツールの使用状況、最終的な応答がチャットウィンドウにストリーミング表示されます。
+セッション管理:
+左側のサイドバーを使用して会話を管理します。
+「➕ 新しいチャット」をクリックして新しい会話を開始します。
+リストからセッションを選択して、その履歴を読み込みます。
+リストの下にある「選択したセッションを管理」セクションを使用して、現在選択されているチャットの名前を変更したり削除したりします（最後のチャットは削除できません）。
+永続性: チャット履歴とセッション名は、JSONファイルとしてchatsHistory/ディレクトリに自動的に保存され、アプリケーションを再起動すると再読み込みされます。
+🔌 APIの使用方法 (追加)
+サーバーは/v1/chat/completionsでOpenAI互換のAPIエンドポイントを公開しています（デフォルトでは http://0.0.0.0:8000 で実行）。標準的なOpenAIクライアントライブラリ（公式のPython openaiライブラリなど）を使用して対話できます。
 
-## 🔌 APIの使用方法
+クライアントの設定:
 
-サーバーは`/v1/chat/completions`でOpenAI互換のAPIエンドポイントを公開しています。標準的なOpenAIクライアントライブラリ（公式のPython `openai`ライブラリなど）を使用して対話できます。
+Base URL: http://<サーバーIPまたはlocalhost>:8000/v1 (例: http://127.0.0.1:8000/v1)
+API Key: 任意の空でない文字列（例："not-needed"）。サーバーはこのキーを検証しません。
+Model: 任意の空でない文字列（例："openmanus"）。サーバーはこのモデル名を無視し、設定されたManusエージェントを使用します。
+openai Pythonライブラリを使用した例:
 
-**クライアントの設定:**
-
-*   **Base URL**: `http://127.0.0.1:7860/v1`
-*   **API Key**: 任意の空でない文字列（例：`"not-needed"`）。サーバーはこのキーを検証しません。
-*   **Model**: 任意の空でない文字列（例：`"openmanus"`）。サーバーはこのモデル名を無視し、設定されたManusエージェントを使用します。
-
-**`openai` Pythonライブラリを使用した例:**
-
-```python
 # test_api.py
 import openai
 
-# クライアントを設定
+# クライアントを設定 (APIサーバーがローカルの8000ポートで実行されていると仮定)
 client = openai.OpenAI(
-    base_url="http://127.0.0.1:7860/v1",
+    base_url="http://127.0.0.1:8000/v1",
     api_key="not-needed", # ダミーキーを提供
 )
 
@@ -220,44 +216,33 @@ try:
     print()
 except Exception as e:
     print(f"APIストリーミングエラー: {e}")
-```
+🙌 貢献方法
+我々は建設的な意見や有益な貢献を歓迎します！issueを作成するか、プルリクエストを提出してください。
 
-## 🙌 貢献
+または @mannaandpoem に📧メールでご連絡ください：mannaandpoem@gmail.com
 
-貢献を歓迎します！issueやpull requestを自由に提出してください。
+注意: プルリクエストを送信する前に、pre-commitツールを使用して変更を確認してください。pre-commit run --all-filesを実行してチェックを実行します。
 
-pull requestを送信する前に、変更がpre-commitチェックをパスすることを確認してください：
-```bash
-# pre-commitフックをインストール（まだの場合）
-pre-commit install
-# すべてのファイルでチェックを実行
-pre-commit run --all-files
-```
+💬 コミュニティグループ
+Feishuのネットワーキンググループに参加して、他の開発者と経験を共有しましょう！
 
-メールでの連絡も可能です：mannaandpoem@gmail.com
+⭐ スター履歴
+Star History Chart
 
-## 💬 コミュニティ
+🙏 謝辞
+このプロジェクトの基本的なサポートを提供してくれたanthropic-computer-use とbrowser-useに感謝します！
 
-私たちのコミュニティグループに参加してください（詳細/リンクがあれば記載、なければ削除または更新）。
-*(コミュニティリンク/画像のプレースホルダー)*
+さらに、AAAJ、MetaGPT、OpenHands、SWE-agentにも感謝します。
 
-## 🙏 謝辞
+また、Hugging Face デモスペースをサポートしてくださった阶跃星辰 (stepfun)にも感謝いたします。
 
-基盤となるサポートを提供してくださった[anthropic-computer-use](https://github.com/anthropics/anthropic-quickstarts/tree/main/computer-use-demo)と[browser-use](https://github.com/browser-use/browser-use)に特に感謝します。
+OpenManusはMetaGPTのコントリビューターによって構築されました。このエージェントコミュニティに大きな感謝を！
 
-また、[AAAJ](https://github.com/metauto-ai/agent-as-a-judge)、[MetaGPT](https://github.com/geekan/MetaGPT)、[OpenHands](https://github.com/All-Hands-AI/OpenHands)、[SWE-agent](https://github.com/SWE-agent/SWE-agent)の業績にも感謝します。
-
-Hugging Faceデモスペースのサポートを提供してくださったStepFun（阶跃星辰）に感謝します。
-
-OpenManusはMetaGPTコミュニティの貢献者によって構築されています。
-
-## 📜 引用
-
+📜 引用
 研究や業務でOpenManusを使用する場合は、次のように引用してください：
 
-```bibtex
 @misc{openmanus2025,
-  author = {Xinbin Liang and Jinyu Xiang and Zhaoyang Yu and Jiayi Zhang and Sirui Hong and あなたの名前 (貢献した場合)},
+  author = {Xinbin Liang and Jinyu Xiang and Zhaoyang Yu and Jiayi Zhang and Sirui Hong and Hank-Chromela (UI/API Integration)},
   title = {OpenManus: UIとAPIを備えた多機能AIエージェントのためのオープンソースフレームワーク},
   year = {2025},
   publisher = {GitHub},
