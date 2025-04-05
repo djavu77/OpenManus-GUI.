@@ -1,30 +1,30 @@
 # Global LLM configuration
-# 全局大语言模型配置
+# Global Large Language Model Configuration
 [llm]
-model = "gemini-2.0-flash"       # 使用的LLM模型（英文注释保留）
-base_url = "https://generativelanguage.googleapis.com/v1beta/openai/"                              # API端点URL
-api_key = ""                   # 您的API密钥
-max_tokens = 8192                          # 响应中允许的最大token数
-temperature = 0.0                          # 控制生成随机性（0-1，0最确定）
+model = "gemini-2.0-flash"       # LLM model to use
+base_url = "https://generativelanguage.googleapis.com/v1beta/openai/"                              # API endpoint URL
+api_key = ""                   # Your API key
+max_tokens = 8192                          # Maximum tokens allowed in the response
+temperature = 0.0                          # Controls generation randomness (0-1, 0 most deterministic)
 
-# [llm] # Amazon Bedrock 配置示例
-# api_type = "aws"                                       # 必须设置为aws
-# model = "us.anthropic.claude-3-7-sonnet-20250219-v1:0" # Bedrock支持的模型ID
-# base_url = "bedrock-runtime.us-west-2.amazonaws.com"   # 当前未使用
-# max_tokens = 8192                                      # 最大token数
-# temperature = 1.0                                      # 生成随机性（1.0最随机）
-# api_key = "bear"                                       # 必须填写但实际不使用
+# [llm] # Amazon Bedrock configuration example
+# api_type = "aws"                                       # Must be set to aws
+# model = "us.anthropic.claude-3-7-sonnet-20250219-v1:0" # Bedrock supported Model ID
+# base_url = "bedrock-runtime.us-west-2.amazonaws.com"   # Currently unused
+# max_tokens = 8192                                      # Maximum tokens
+# temperature = 1.0                                      # Generation randomness (1.0 most random)
+# api_key = "bear"                                       # Must be filled but not actually used
 
-# [llm] #Azure OpenAI 配置示例:
-# api_type= 'azure'                              # 必须设置为azure
-# model = "YOUR_MODEL_NAME"                     # 模型名称 例如："gpt-4o-mini"
-# base_url = "{YOUR_AZURE_ENDPOINT.rstrip('/')}/openai/deployments/{AZURE_DEPOLYMENT_ID}"  # Azure端点URL
-# api_key = "AZURE API KEY"                     # Azure API密钥
-# max_tokens = 8096                             # 最大token数限制
-# temperature = 0.0                             # 生成确定性控制
-# api_version="AZURE API VERSION"               # API版本 例如："2024-08-01-preview"
+# [llm] # Azure OpenAI configuration example:
+# api_type= 'azure'                              # Must be set to azure
+# model = "YOUR_MODEL_NAME"                     # Model name e.g., "gpt-4o-mini"
+# base_url = "{YOUR_AZURE_ENDPOINT.rstrip('/')}/openai/deployments/{AZURE_DEPOLYMENT_ID}"  # Azure endpoint URL
+# api_key = "AZURE API KEY"                     # Azure API key
+# max_tokens = 8096                             # Maximum token limit
+# temperature = 0.0                             # Generation determinism control
+# api_version="AZURE API VERSION"               # API version e.g., "2024-08-01-preview"
 
-# [llm] #OLLAMA:
+# [llm] # OLLAMA:
 # api_type = 'ollama'
 # model = "llama3.2"
 # base_url = "http://localhost:11434/v1"
@@ -33,13 +33,13 @@ temperature = 0.0                          # 控制生成随机性（0-1，0最�
 # temperature = 0.0
 
 # Optional configuration for specific LLM models
-# 特定LLM模型的视觉配置
+# Vision configuration for specific LLM models
 [llm.vision]
-model = "gemini-2.0-flash"       # 使用的视觉模型
-base_url = "https://generativelanguage.googleapis.com/v1beta/openai/" # 视觉模型API端点URL
-api_key = ""                   # 视觉模型API密钥
-max_tokens = 8192                          # 响应最大token数限制
-temperature = 0.0                          # 生成随机性控制（0最确定）
+model = "gemini-2.0-flash"       # Vision model to use
+base_url = "https://generativelanguage.googleapis.com/v1beta/openai/" # Vision model API endpoint URL
+api_key = ""                   # Vision model API key
+max_tokens = 8192                          # Response maximum token limit
+temperature = 0.0                          # Generation randomness control (0 most deterministic)
 
 # [llm.vision] #OLLAMA VISION:
 # api_type = 'ollama'
